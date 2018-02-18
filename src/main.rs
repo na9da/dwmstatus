@@ -42,9 +42,9 @@ fn get_battery(bat: &str) -> io::Result<(bool, u32)> {
     Ok((is_discharging, pcnt as u32))
 }
 
-fn get_date() -> String {
+fn get_datetime() -> String {
     Local::now()
-        .format("%e %a, %m | %H:%M")
+        .format("%b %e, %a | %H:%M")
         .to_string()
 }
 
@@ -68,7 +68,7 @@ fn main() {
             "{}{}%\x01| {}",
             battery_color,
             battery_pcnt,
-            get_date()
+            get_datetime()
         );
 
         let data = message.as_ptr() as *const c_void;
